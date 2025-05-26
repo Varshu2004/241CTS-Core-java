@@ -1,0 +1,236 @@
+import java.util.*;
+import java.io.*;
+import java.nio.file.*;
+
+public class JavaExercises {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) throws Exception {
+        while(true) {
+            System.out.println("\nChoose an exercise to run (1-41), or 0 to exit:");
+            int choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+            switch(choice) {
+                case 0: System.out.println("Goodbye!"); return;
+                case 1: exercise1_HelloWorld(); break;
+                case 2: exercise2_SimpleCalculator(); break;
+                case 3: exercise3_EvenOddChecker(); break;
+                case 4: exercise4_LeapYearChecker(); break;
+                case 5: exercise5_MultiplicationTable(); break;
+                case 6: exercise6_DataTypeDemo(); break;
+                case 7: exercise7_TypeCasting(); break;
+                case 8: exercise8_OperatorPrecedence(); break;
+                case 9: exercise9_GradeCalculator(); break;
+                case 10: exercise10_NumberGuessingGame(); break;
+                case 11: exercise11_FactorialCalculator(); break;
+                case 12: exercise12_MethodOverloading(); break;
+                case 13: exercise13_RecursiveFibonacci(); break;
+                case 14: exercise14_ArraySumAverage(); break;
+                case 15: exercise15_StringReversal(); break;
+                case 16: exercise16_PalindromeChecker(); break;
+                case 17: exercise17_ClassObjectCreation(); break;
+                case 18: exercise18_InheritanceExample(); break;
+                case 19: exercise19_InterfaceImplementation(); break;
+                case 20: exercise20_TryCatchExample(); break;
+                case 21: exercise21_CustomException(); break;
+                case 22: exercise22_FileWriting(); break;
+                case 23: exercise23_FileReading(); break;
+                case 24: exercise24_ArrayListExample(); break;
+                case 25: exercise25_HashMapExample(); break;
+                case 26: exercise26_ThreadCreation(); break;
+                case 27: exercise27_LambdaExpressions(); break;
+                case 28: exercise28_StreamAPI(); break;
+                case 29: exercise29_Records(); break;
+                case 30: exercise30_PatternMatchingSwitch(); break;
+                case 31: exercise31_BasicJDBCConnection(); break;
+                case 32: exercise32_InsertUpdateJDBC(); break;
+                case 33: exercise33_TransactionHandlingJDBC(); break;
+                case 34: exercise34_JavaModules(); break;
+                case 35: exercise35_TCPClientServerChat(); break;
+                case 36: exercise36_HTTPClientAPI(); break;
+                case 37: exercise37_JavapBytecode(); break;
+                case 38: exercise38_DecompileClassFile(); break;
+                case 39: exercise39_Reflection(); break;
+                case 40: exercise40_VirtualThreads(); break;
+                case 41: exercise41_ExecutorServiceCallable(); break;
+                default: System.out.println("Invalid choice.");
+            }
+        }
+    }
+
+    // Exercise 1
+    static void exercise1_HelloWorld() {
+        System.out.println("Hello, World!");
+    }
+
+    // Exercise 2
+    static void exercise2_SimpleCalculator() {
+        System.out.print("Enter first number: ");
+        double a = sc.nextDouble();
+        System.out.print("Enter second number: ");
+        double b = sc.nextDouble();
+        sc.nextLine();
+        System.out.print("Choose operation (+, -, *, /): ");
+        String op = sc.nextLine();
+
+        double result;
+        switch(op) {
+            case "+": result = a + b; break;
+            case "-": result = a - b; break;
+            case "*": result = a * b; break;
+            case "/": 
+                if(b == 0) {
+                    System.out.println("Error: Division by zero!");
+                    return;
+                }
+                result = a / b; break;
+            default:
+                System.out.println("Invalid operation");
+                return;
+        }
+        System.out.println("Result: " + result);
+    }
+
+    // Exercise 3
+    static void exercise3_EvenOddChecker() {
+        System.out.print("Enter an integer: ");
+        int n = sc.nextInt();
+        System.out.println(n + " is " + (n % 2 == 0 ? "Even" : "Odd"));
+    }
+
+    // Exercise 4
+    static void exercise4_LeapYearChecker() {
+        System.out.print("Enter a year: ");
+        int year = sc.nextInt();
+        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        System.out.println(year + (isLeap ? " is a Leap Year." : " is not a Leap Year."));
+    }
+
+    // Exercise 5
+    static void exercise5_MultiplicationTable() {
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        for(int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+
+    // Exercise 6
+    static void exercise6_DataTypeDemo() {
+        int i = 42;
+        float f = 3.14f;
+        double d = 3.1415926535;
+        char c = 'A';
+        boolean b = true;
+        System.out.println("int: " + i);
+        System.out.println("float: " + f);
+        System.out.println("double: " + d);
+        System.out.println("char: " + c);
+        System.out.println("boolean: " + b);
+    }
+
+    // Exercise 7
+    static void exercise7_TypeCasting() {
+        double dbl = 9.78;
+        int castedInt = (int)dbl;
+        int integer = 42;
+        double castedDouble = (double)integer;
+        System.out.println("Double to int: " + castedInt);
+        System.out.println("Int to double: " + castedDouble);
+    }
+
+    // Exercise 8
+    static void exercise8_OperatorPrecedence() {
+        int result = 10 + 5 * 2; // multiplication has higher precedence
+        System.out.println("10 + 5 * 2 = " + result + " (5*2 evaluated first)");
+    }
+
+    // Exercise 9
+    static void exercise9_GradeCalculator() {
+        System.out.print("Enter marks (0-100): ");
+        int marks = sc.nextInt();
+        char grade;
+        if (marks >= 90) grade = 'A';
+        else if (marks >= 80) grade = 'B';
+        else if (marks >= 70) grade = 'C';
+        else if (marks >= 60) grade = 'D';
+        else grade = 'F';
+        System.out.println("Grade: " + grade);
+    }
+
+    // Exercise 10
+    static void exercise10_NumberGuessingGame() {
+        Random rand = new Random();
+        int target = rand.nextInt(100) + 1;
+        System.out.println("Guess the number between 1 and 100");
+        int guess;
+        do {
+            System.out.print("Your guess: ");
+            guess = sc.nextInt();
+            if (guess < target) System.out.println("Too low!");
+            else if (guess > target) System.out.println("Too high!");
+            else System.out.println("Correct!");
+        } while (guess != target);
+    }
+
+    // Exercise 11
+    static void exercise11_FactorialCalculator() {
+        System.out.print("Enter a non-negative integer: ");
+        int n = sc.nextInt();
+        long fact = 1;
+        for(int i = 2; i <= n; i++) fact *= i;
+        System.out.println("Factorial of " + n + " is " + fact);
+    }
+
+    // Exercise 12
+    static void exercise12_MethodOverloading() {
+        System.out.println("add(2,3) = " + add(2,3));
+        System.out.println("add(2.5,3.5) = " + add(2.5,3.5));
+        System.out.println("add(1,2,3) = " + add(1,2,3));
+    }
+    static int add(int a, int b) { return a+b; }
+    static double add(double a, double b) { return a+b; }
+    static int add(int a, int b, int c) { return a+b+c; }
+
+    // Exercise 13
+    static void exercise13_RecursiveFibonacci() {
+        System.out.print("Enter n (positive integer): ");
+        int n = sc.nextInt();
+        System.out.println("Fibonacci number " + n + " = " + fibonacci(n));
+    }
+    static int fibonacci(int n) {
+        if (n <= 1) return n;
+        else return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    // Exercise 14
+    static void exercise14_ArraySumAverage() {
+        System.out.print("Number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int sum = 0;
+        System.out.println("Enter elements:");
+        for(int i=0; i<n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+        double avg = (double)sum / n;
+        System.out.println("Sum = " + sum);
+        System.out.println("Average = " + avg);
+    }
+
+    // Exercise 15
+    static void exercise15_StringReversal() {
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
+        String reversed = new StringBuilder(s).reverse().toString();
+        System.out.println("Reversed: " + reversed);
+    }
+
+    // Exercise 16
+    static void exercise16_PalindromeChecker() {
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
+        String cleaned = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        String reversed = new StringBuilder(cleaned).reverse().to
